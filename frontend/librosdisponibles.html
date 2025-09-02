@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/librosdisponibles.css"> 
+    <title>Libros disponibles por categoria</title>
+</head>
+<body>
+    <div class="titulo">
+    <img src="/img/libro.png" alt="">
+    <h1>Libros disponibles por categoria</h1>
+    <img src="/img/libro.png" alt="">
+  </div>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="prestamos.html">Consultar prestamos activos</a></li>
+        <li><a href="prestamosActuales.html">Consultar libros prestados actualmente</a></li>
+        <li><a href="biblioteca.html">Volver al inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <button onclick="cargarLibros()">Cargar Libros</button>
+
+  <!-- Tabla -->
+  <table id="tablaLibros" style="display:none;">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Titulo</th>
+        <th>ID Ejemplar</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Cards -->
+  <div id="cardsLibros" class="cards-container" style="display:none;"></div>
+</body>
+<script src="librosdisponibles.js"></script>
+</html>

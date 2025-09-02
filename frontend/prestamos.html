@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Préstamos Activos</title>
+  <link rel="stylesheet" href="prestamos.css">
+</head>
+
+<body>
+  <div class="titulo">
+    <img src="/img/libro.png" alt="">
+    <h1>Prestamos activos sin fecha de devolucion real</h1>
+    <img src="/img/libro.png" alt="">
+  </div>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="librosdisponibles.html">Consultar libros disponibles por categoria</a></li>
+        <li><a href="prestamosActuales.html">Consultar libros prestados actualmente</a></li>
+        <li><a href="biblioteca.html">Volver al inicio</a></li>
+
+      </ul>
+    </nav>
+  </header>
+  <button onclick="cargarPrestamos()">Cargar Préstamos</button>
+  <hr>
+  <!-- Tabla -->
+  <table id="tablaPrestamos" style="display:none;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Libro</th>
+        <th>Fecha Préstamo</th>
+        <th>Fecha Devolución Prevista</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Cards -->
+  <div id="cardsPrestamos" class="cards-container" style="display:none;"></div>
+
+
+  <script src="prestamos.js"></script>
+</body>
+
+</html>

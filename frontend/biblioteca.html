@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="biblioteca.css">
+    <title>Tablas Biblioteca</title>
+</head>
+
+<body>
+    <div class="titulo">
+        <img src="/img/libro.png" alt="">
+        <h1>¡Bienvenido! Consulta tus registros de la Biblioteca</h1>
+        <img src="/img/libro.png" alt="">
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="librosdisponibles.html">Consultar libros disponibles por categoria</a></li>
+                <li><a href="prestamos.html">Consultar prestamos activos sin fecha de devolucion real</a></li>
+                <li><a href="prestamosActuales.html">Consultar libros prestados actualmente</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+           <div class="buttons">
+        <button onclick="cargarTabla('detalle_prestamo')">Detalle Préstamo</button>
+        <button onclick="cargarTabla('ejemplares')">Ejemplares</button>
+        <button onclick="cargarTabla('libros')">Libros</button>
+        <button onclick="cargarTabla('prestamos')">Préstamos</button>
+        <button onclick="cargarTabla('usuarios')">Usuarios</button>
+    </div>
+    <hr>
+    <table id="tabla" style="display:none;">
+        <thead>
+            <tr id="tablaHead"></tr>
+        </thead>
+        <tbody id="tablaBody"></tbody>
+    </table>
+    </main>
+    <script src="biblioteca.js"></script>
+</body>
+
+</html>

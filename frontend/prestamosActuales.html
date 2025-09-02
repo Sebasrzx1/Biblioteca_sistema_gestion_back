@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Préstamos Activos</title>
+ <link rel="stylesheet" href="/frontend/prestamosactulales.css">
+</head>
+<body>
+     <div class="titulo">
+        <img src="/img/libro.png" alt="">
+        <h1>Prestamos actuales</h1>
+        <img src="/img/libro.png" alt="">
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="librosdisponibles.html">Consultar libros disponibles por categoria</a></li>
+                <li><a href="prestamos.html">Consultar prestamos activos sin fecha de devolucion real</a></li>
+                <li><a href="biblioteca.html">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+  <button onclick="cargarPrestamos()">Cargar Préstamos</button>
+
+  <!-- Tabla -->
+  <table id="tablaPrestamos" style="display:none;">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>ID Ejemplar</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Cards -->
+  <div id="cardsPrestamos" class="cards-container" style="display:none;"></div>
+
+  <script>
+    async function cargarPrestamos() {
+      try {
+        const response = await fetch("http://localhost:3000/api/librosprestados/prestamos-actuales");
+        const data = await response.json();
+
+        // Mostrar en tabla
+        const tabla = document.getElementById("tablaPrestamos");
+        const tbody = tabla.querySelector("tbody");
+        tbody.innerHTML = "";
+        data.forEach(p => {
+          const row = `
+            <tr>
+              <td>${p.titulo}</td>
+              <td>${p.id_ejemplar}</td>
+              <td>${p.nombre}</td>
+              <td>${p.apellido}</td>
+            </tr>
+          `;
+          tbody.innerHTML += row;
+        });
+        tabla.style.display = "table";
+
+        // Mostrar en cards
+        const cards = document.getElementById("cardsPrestamos");
+        cards.innerHTML = "";
+        data.forEach(p => {
+          const card = `
+            <div class="card">
+              <h3>${p.titulo}</h3>
+              <p><b>ID Ejemplar:</b> ${p.id_ejemplar}</p>
+              <p><b>Usuario:</b> ${p.nombre} ${p.apellido}</p>
+            </div>
+          `;
+          cards.innerHTML += card;
+        });
+        cards.style.display = "flex";
+
+      } catch (err) {
+        console.error("Error al cargar préstamos:", err);
+        alert("No se pudieron cargar los préstamos.");
+      }
+    }
+  </script>
+</body>
+</html>
